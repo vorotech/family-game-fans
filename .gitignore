@@ -1,0 +1,20 @@
+# wrangler files
+.wrangler
+.dev.vars*
+
+# dependencies
+/.pnpm-store
+/node_modules
+
+# production
+dist/
+
+# misc
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+
+# debug
+npm-debug.log*
+pnpm-debug.log*
