@@ -3,50 +3,351 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Starting Soon - Family Game Fans</title>
+    <title>Family Game Fans - Starting Soon</title>
     <style>
-        body {
+        @import url('https://fonts.googleapis.com/css2?family=Coiny&family=Nunito:wght@600;800&display=swap');
+        
+        * {
             margin: 0;
             padding: 0;
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(45deg, #1e3c72, #2a5298);
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
             height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
             overflow: hidden;
+            background: linear-gradient(135deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57);
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease infinite;
+            position: relative;
         }
-        .overlay {
-            text-align: center;
-            animation: fadeIn 2s ease-in;
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
-        .title {
+
+        /* Risograph texture overlay */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(255, 107, 107, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(78, 205, 196, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(150, 206, 180, 0.3) 0%, transparent 50%);
+            mix-blend-mode: multiply;
+            animation: textureFloat 10s ease-in-out infinite;
+        }
+
+        @keyframes textureFloat {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(2deg); }
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative;
+            z-index: 10;
+        }
+
+        .channel-name {
+            font-family: 'Coiny', cursive;
             font-size: 4rem;
-            font-weight: bold;
-            margin-bottom: 20px;
-            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
-            animation: pulse 3s infinite;
+            color: #2c3e50;
+            text-shadow: 6px 6px 0px #ff6b6b, 12px 12px 0px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            animation: bounce 2s ease-in-out infinite;
+            text-align: center;
+            line-height: 1.1;
         }
-        .subtitle {
-            font-size: 1.5rem;
-            opacity: 0.9;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
         }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(50px); }
-            to { opacity: 1; transform: translateY(0); }
+
+        .starting-soon {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #fff;
+            text-shadow: 4px 4px 0px #2c3e50, 8px 8px 0px rgba(0,0,0,0.2);
+            margin-bottom: 1rem;
+            animation: pulse 1.5s ease-in-out infinite;
         }
+
         @keyframes pulse {
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.05); }
         }
+
+        /* Floating icons */
+        .floating-icon {
+            position: absolute;
+            font-size: 3rem;
+            animation: float 6s ease-in-out infinite;
+            opacity: 0.8;
+        }
+
+        .icon-controller {
+            top: 15%;
+            left: 10%;
+            animation-delay: 0s;
+            color: #ff6b6b;
+            text-shadow: 3px 3px 0px #2c3e50;
+        }
+
+        .icon-dice {
+            top: 20%;
+            right: 15%;
+            animation-delay: -2s;
+            color: #4ecdc4;
+            text-shadow: 3px 3px 0px #2c3e50;
+        }
+
+        .icon-heart {
+            bottom: 25%;
+            left: 15%;
+            animation-delay: -4s;
+            color: #feca57;
+            text-shadow: 3px 3px 0px #2c3e50;
+        }
+
+        .icon-star {
+            bottom: 15%;
+            right: 10%;
+            animation-delay: -1s;
+            color: #96ceb4;
+            text-shadow: 3px 3px 0px #2c3e50;
+        }
+
+        .icon-circle {
+            top: 50%;
+            left: 5%;
+            animation-delay: -3s;
+            color: #45b7d1;
+            text-shadow: 3px 3px 0px #2c3e50;
+        }
+
+        .icon-triangle {
+            top: 60%;
+            right: 8%;
+            animation-delay: -5s;
+            color: #ff6b6b;
+            text-shadow: 3px 3px 0px #2c3e50;
+        }
+
+        .icon-chess {
+            top: 35%;
+            right: 5%;
+            animation-delay: -2.5s;
+            color: #96ceb4;
+            text-shadow: 3px 3px 0px #2c3e50;
+        }
+
+        @keyframes float {
+            0%, 100% { 
+                transform: translateY(0px) rotate(0deg); 
+            }
+            25% { 
+                transform: translateY(-20px) rotate(5deg); 
+            }
+            50% { 
+                transform: translateY(-40px) rotate(-3deg); 
+            }
+            75% { 
+                transform: translateY(-20px) rotate(2deg); 
+            }
+        }
+
+        /* Gaming-themed shapes */
+        .shape {
+            position: absolute;
+            animation: drift 8s linear infinite;
+        }
+
+        .shape-1 {
+            width: 60px;
+            height: 60px;
+            background: #ff6b6b;
+            border-radius: 50%;
+            top: 30%;
+            left: -60px;
+            animation-duration: 12s;
+            box-shadow: 5px 5px 0px #2c3e50;
+        }
+
+        .shape-2 {
+            width: 40px;
+            height: 40px;
+            background: #4ecdc4;
+            transform: rotate(45deg);
+            top: 70%;
+            right: -40px;
+            animation-duration: 15s;
+            animation-direction: reverse;
+            box-shadow: 4px 4px 0px #2c3e50;
+        }
+
+        .shape-3 {
+            width: 0;
+            height: 0;
+            border-left: 25px solid transparent;
+            border-right: 25px solid transparent;
+            border-bottom: 50px solid #feca57;
+            top: 10%;
+            right: -50px;
+            animation-duration: 10s;
+            filter: drop-shadow(3px 3px 0px #2c3e50);
+        }
+
+        @keyframes drift {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(100vw + 100px)); }
+        }
+
+        /* Glitch effect for extra visual interest */
+        .glitch {
+            position: relative;
+        }
+
+        .glitch::before,
+        .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .glitch::before {
+            animation: glitch-1 0.5s infinite;
+            color: #ff4757;
+            z-index: -1;
+        }
+
+        .glitch::after {
+            animation: glitch-2 0.5s infinite;
+            color: #3742fa;
+            z-index: -2;
+        }
+
+        @keyframes glitch-1 {
+            0%, 14%, 15%, 49%, 50%, 99%, 100% {
+                transform: translate(0);
+            }
+            15%, 49% {
+                transform: translate(-2px, 2px);
+            }
+        }
+
+        @keyframes glitch-2 {
+            0%, 20%, 21%, 62%, 63%, 99%, 100% {
+                transform: translate(0);
+            }
+            21%, 62% {
+                transform: translate(2px, -2px);
+            }
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .channel-name {
+                font-size: 2.5rem;
+            }
+            .starting-soon {
+                font-size: 2rem;
+            }
+            .floating-icon {
+                font-size: 2rem;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="overlay">
-        <div class="title">STARTING SOON</div>
-        <div class="subtitle">Family Game Fans</div>
+    <div class="container">
+        <h1 class="channel-name glitch" data-text="Family Game Fans">Family Game Fans</h1>
+        <div class="starting-soon">Starting Soon</div>
     </div>
+
+    <!-- Floating gaming icons -->
+    <div class="floating-icon icon-controller">🎮</div>
+    <div class="floating-icon icon-dice">🎲</div>
+    <div class="floating-icon icon-heart">❤️</div>
+    <div class="floating-icon icon-star">⭐</div>
+    <div class="floating-icon icon-circle">⚪</div>
+    <div class="floating-icon icon-triangle">🔺</div>
+    <div class="floating-icon icon-chess">♟️</div>
+
+    <!-- Abstract floating shapes -->
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+    <div class="shape shape-3"></div>
+
+    <script>
+        // Add some interactive sparkle effects
+        function createSparkle() {
+            const sparkle = document.createElement('div');
+            sparkle.style.position = 'absolute';
+            sparkle.style.width = '4px';
+            sparkle.style.height = '4px';
+            sparkle.style.background = '#fff';
+            sparkle.style.borderRadius = '50%';
+            sparkle.style.boxShadow = '0 0 6px #fff';
+            sparkle.style.left = Math.random() * 100 + 'vw';
+            sparkle.style.top = Math.random() * 100 + 'vh';
+            sparkle.style.animation = 'sparkle 2s ease-out forwards';
+            sparkle.style.zIndex = '5';
+            
+            document.body.appendChild(sparkle);
+            
+            setTimeout(() => {
+                sparkle.remove();
+            }, 2000);
+        }
+
+        // Add sparkle keyframes
+        const sparkleStyle = document.createElement('style');
+        sparkleStyle.textContent = `
+            @keyframes sparkle {
+                0% {
+                    opacity: 0;
+                    transform: scale(0) rotate(0deg);
+                }
+                50% {
+                    opacity: 1;
+                    transform: scale(1) rotate(180deg);
+                }
+                100% {
+                    opacity: 0;
+                    transform: scale(0) rotate(360deg);
+                }
+            }
+        `;
+        document.head.appendChild(sparkleStyle);
+
+        // Create sparkles periodically
+        setInterval(createSparkle, 1500);
+
+        // Add some random color shifts to floating icons
+        const icons = document.querySelectorAll('.floating-icon');
+        setInterval(() => {
+            icons.forEach(icon => {
+                const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#feca57'];
+                icon.style.color = colors[Math.floor(Math.random() * colors.length)];
+            });
+        }, 3000);
+    </script>
 </body>
 </html>
